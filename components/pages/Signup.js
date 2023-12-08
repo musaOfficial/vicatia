@@ -7,47 +7,26 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 function Signup(){
 
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
-    const [countries, setCountries] = useState([]);
-    const [cities, setCities] = useState([]);
-
-    var width = 1000;
-
-    if(typeof window != 'undefined'){
-        const [widths, setWidth]   = useState(window.innerWidth);
-        const [heights, setHeight] = useState(window.innerHeight);
-        const updateDimensions = () => {
-            setWidth(window.innerWidth);
-            setHeight(window.innerHeight);
-        }
-        useEffect(() => {
-            window.addEventListener("resize", updateDimensions);
-            return () => window.removeEventListener("resize", updateDimensions);
-        }, []);
-        width = widths;
-    }
     return (
-        <div className={classes.container}>
-            <div className={classes.logo}>
+        <div className={classes.c_container}>
+            <div className={classes.c_logo}>
                 <Image src={Logo} draggable="false" alt='Logo'/>
             </div>
-            {width <= 980 && <div className={classes.reserveleft}></div>}
-            {width > 980 && <div className={classes.left}>
-                <div className={classes.heading}>Welcome Page</div>
-                <div className={classes.description}>Sign up to<br></br>continue access</div>
-                <div className={classes.paw}>
+            <div className={classes.c_reserveleft}></div>
+            <div className={classes.c_left}>
+                <div className={classes.c_heading}>Welcome Page</div>
+                <div className={classes.c_description}>Sign up to<br></br>continue access</div>
+                <div className={classes.c_paw}>
                     <Image src={Paw} alt='Paw Icon' />
                 </div>
-            </div>}
-            <div className={classes.right}>
-                <div className={classes.signupas}><span>Sign up</span><span>as</span></div>
-                <Link href={"signup/as_petowner"}><div className={classes.button}>Pet Owner</div></Link>
-                <div className={classes.or}>OR</div>
-                <Link href={"signup/as_petsitter"}><div className={classes.button}>Pet Sitter</div></Link>
-                <div className={classes.existingacc}>Already have an account? <Link href={"/login"}><span className={classes.underline}>Login</span></Link></div>
             </div>
-  
+            <div className={classes.c_right}>
+                <div className={classes.c_signupas}><span>Sign up</span><span>as</span></div>
+                <Link href={"signup/as_petowner"}><div className={classes.c_button}>Pet Owner</div></Link>
+                <div className={classes.c_or}>OR</div>
+                <Link href={"signup/as_petsitter"}><div className={classes.c_button}>Pet Sitter</div></Link>
+                <div className={classes.c_existingacc}>Already have an account? <Link href={"/login"}><span className={classes.c_underline}>Login</span></Link></div>
+            </div>
         </div>
     )
 } export default Signup;

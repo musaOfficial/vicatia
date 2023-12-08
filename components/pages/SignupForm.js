@@ -5,14 +5,10 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Link from 'next/link'
 
 function SignupForm(){
-    const router = useRouter();
-    const { slug } = router.query;
-  
-    // Now, 'slug' contains the value of the dynamic segment
 
     var width = 1000;
 
@@ -38,6 +34,9 @@ function SignupForm(){
     async function onSubmit(){
         handleErrors();
         // Wenn erfolgreich, Weiterleitung zur Profilseite des Benutzers
+
+        // Serverseitige Überprüfung für den Alter notwendig (14 oder älter)
+       
     }
 
 
@@ -47,14 +46,15 @@ function SignupForm(){
         lastname: "",
         email: "",
         phonenumber: "",
+        birth_date: new Date(),
+        gender: "",
         country: "",
         city: "",
         password: "",
         confirmpassword: "",
-        typeofuser: slug,
+        isPetowner: undefined,
         newsletter: true,
     })
-
 
     // Diese Funktion wird aufgerufen, wenn Veränderungen in den Inputs passieren (außer in Country & City)
     const handleChange = (event) => {
@@ -137,6 +137,31 @@ function SignupForm(){
     console.log(state);
   };
 
+  const calculateMinDate = () => {
+    const currentDate = new Date();
+    currentDate.setFullYear(currentDate.getFullYear() - 14);
+
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getDate().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}; 
+
+    function handleIsOwner(b){
+        setState(prevState => ({
+            ...prevState,
+            isPetowner: b
+        }));
+    }
+
+    function handleGenderChange(e){
+        setState(prevState => ({
+            ...prevState,
+            gender: e.value
+        }))
+    }
+
     return (
     <div className={classes.container}>
         <div className={classes.logo}>
@@ -151,7 +176,7 @@ function SignupForm(){
             </div>
         </div>}
         <div className={classes.right}>
-            <div className={classes.signupas}><span>Signup</span></div>
+            {state.isPetowner !== undefined ? <><div className={classes.signupas}><span>Signup</span></div>
             <form onSubmit={onSubmit} className={classes.form}>
                 <div className={classes.relative}>
                     <input 
@@ -180,6 +205,13 @@ function SignupForm(){
 
                 </div>
                 <div className={classes.relative}>
+                    <select id="gender" name='gender' value={state.gender} className={classes.selectinput} onChange={handleGenderChange} required>
+                        <option value="" disabled className={classes.option}>Select your gender</option>
+                        <option className={classes.option}>Male</option>
+                        <option className={classes.option}>Female</option>
+                    </select>
+                </div>
+                <div className={classes.relative}>
                 <input 
                     type='email'
                     name='email'
@@ -204,6 +236,19 @@ function SignupForm(){
                     maxLength={17}
                     
                 />
+                </div>
+                <div className={classes.relative}>
+                    <input 
+                        type='date'
+                        name='birth_date'
+                        value={state.birth_date}
+                        onChange={handleChange}
+                        className={classes.input} 
+                        placeholder='Birth date'
+                        max={calculateMinDate()} 
+                        required
+                        
+                    />
                 </div>
                 <div className={classes.relative}>
                     <select id="country" name='country' value={selectedCountry} className={classes.selectinput} onChange={handleCountryChange} required>
@@ -260,7 +305,17 @@ function SignupForm(){
                 
                 <button className={classes.button} disabled={state.password != state.confirmpassword} type='submit'>Signup</button>
             </form>
-            <div className={classes.existingacc}>Already have an account? <Link href={"/login"}><span className={classes.underline}>Login</span></Link></div>
+            <div className={classes.existingacc}>Already have an account? <Link href={"/login"}><span className={classes.underline}>Login</span></Link></div></> : 
+            <>
+
+            <div className={classes.c_right}>
+                <div className={classes.c_signupas}><span>Sign up</span><span>as</span></div>
+                <div className={classes.c_button} onClick={() => handleIsOwner(true)}>Pet Owner</div>
+                <div className={classes.c_or}>OR</div>
+                <div className={classes.c_button} onClick={() => handleIsOwner(false)}>Pet Sitter</div>
+                <div className={classes.c_existingacc}>Already have an account? <Link href={"/login"}><span className={classes.c_underline}>Login</span></Link></div>
+            </div>
+            </>}
         </div>
 
     </div>

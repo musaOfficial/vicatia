@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Login from '../components/pages/Login';
+import ChatPage from '../components/pages/ChatPage';
 
-export default function LoginPage() {
+export default function Chat() {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,7 +10,7 @@ export default function LoginPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <Login /> 
+     <Chat /> 
       
     </div>
   );
