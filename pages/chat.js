@@ -10,7 +10,7 @@ export default function Chat() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <Chat /> 
+     <ChatPage /> 
       
     </div>
   );
