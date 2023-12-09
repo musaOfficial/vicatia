@@ -1,0 +1,171 @@
+.main{
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+}
+
+.profile{
+    height: 300px;
+    width: 300px;
+}
+
+.row_1{
+    display: flex;
+    margin-right: 20px;
+    height: 300px;
+    position: relative;
+}
+
+
+.img_container{
+    min-width: 300px;
+    min-height: 300px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+.img_placeholder{
+    width: 100%;
+    height: 100%;
+    border: 3px dashed #BBBBBB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.svg_placeholder{
+    height: 80px;
+    width: 80px;
+}
+
+.user_information{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.user_name{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.user_city{
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #BBBBBB;
+}
+
+.location_svg{
+    position: relative;
+    right: -5px;
+}
+
+.user_role{
+    font-size: 18px;
+    font-weight: 700;
+    color: #226F54;
+}
+
+.user_about_me{
+    font-weight: 700;
+    color: #BBBBBB;
+    width: 300px;
+    border-bottom: 2px solid #BBBBBB;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.user_settings{
+    height: 50px;
+    width: 300px;
+    max-width: 300px;
+    border: 2px solid #BBBBBB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .1s ease-in;
+}
+
+.user_settings:hover{
+    border: 2px solid #226F54;
+    background-color: #226F54;
+    color: #fff;
+}
+
+.user_pets_title{
+    color: #000;
+    font-weight: 800;
+    border-bottom: 2px solid #000;
+    width: 300px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.row_3{
+    display: flex;
+    justify-content: center;
+}
+
+.explanation_text{
+    font-size: 32px;
+    font-weight: 700;
+    color: #BBBBBB;
+    width: 60%;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.link{
+    color: #226F54;
+    cursor: pointer;
+}
+
+.link:hover{
+    text-decoration: underline;
+}
+
+.row_2_s{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.basic_information_container{
+    min-width: 300px;
+    margin-right: 20px;
+    border-right: 1px solid #BBBBBB;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.user_i{
+    margin-bottom: 10px;
+}
+
+.information_container_s{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #BBBBBB;
+}
+
+.link{
+    margin: 0 10px;
+}
+
+.row_3_s{
+    margin-top: 40px;
+}
+
+.user_rating{
+    font-weight: bold;
+    width: 300px;
+    font-size: 28px;
+}

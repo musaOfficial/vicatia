@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from './MultipleDropdown.module.css';
 import X from '../../../public/svg/x.svg';
 const MultipleDropdown = ({ label, options, selectedOptions, onOptionsChange }) => {
+    
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionSelect = () => {
@@ -37,8 +38,7 @@ const MultipleDropdown = ({ label, options, selectedOptions, onOptionsChange }) 
           <option value="" disabled hidden>
             Select an option
           </option>
-          {options
-            .filter((option) => !selectedOptions.includes(option))
+          {options.filter((option) => !selectedOptions.includes(option))
             .map((option, index) => (
               <option key={index} value={option}>
                 {option}

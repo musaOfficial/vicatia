@@ -12,16 +12,7 @@ function Homepage(){
         <div className={classes.container}>
           <Header signedIn={signedIn} profilePic={ExamplePic} Name={"Nisa Arslan"}/>
           <main className={classes.main}>
-                {isOwner == false ? (
-                    <div className={classes.p_container}>
-                        <div className={classes.page_title}>Please give information about your services for the most qualitative matchmaking</div>
-                        <div className={classes.p_content}>
-                            <div className={classes.p_column_1}>
-                                
-                            </div>
-                        </div>
-                    </div>
-                ) : ""}
+            Homepage is empty
             </main>
           <Footer Name={"Nisa"} Surname={"Arslan"} />
         </div>
